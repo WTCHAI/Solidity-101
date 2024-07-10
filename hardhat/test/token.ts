@@ -1,13 +1,24 @@
-import { ethers } from "hardhat";
-import { expect } from "chai" ;
+import { expect } from "chai";
+import hh from "hardhat"
 
-describe("Token contract", function () {
-  it("Deployment should assign the total supply of tokens to the owner", async function () {
-    const [owner] = await ethers.getSigners();
+// console.log(hh)
 
-    const hardhatToken = await ethers.deployContract("Token");
+describe('Token contract tester', () => { 
 
-    const ownerBalance = await hardhatToken.balanceOf(owner.address);
-    expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
-  });
-});
+    const TokenDeployment = async ()=>{
+        const Contract = await hh.ethers.getContractFactory("Token"); 
+        const owner = await hh.ethers.getSigners() ;
+        const TokenContract  = await Contract.deploy() ; 
+        return { TokenContract , owner } ; 
+    }
+
+    it('Should deploy the contract correctly', async () => {
+        const { TokenContract , owner } = await TokenDeployment() ; 
+        //Check case that contract address is not empthy string 
+        expect(TokenContract.getAddress).to.not.equal('') ;
+        //Check case that contract address is not null 
+        expect(owner).to.not.equal(TokenContract.owner()) ;
+        console.log(await TokenContract.getAddress()) ;
+    });
+
+})

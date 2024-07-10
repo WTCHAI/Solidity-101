@@ -9,6 +9,9 @@ node_modules
 /typechain
 /typechain-types
 
+# ignore 
+.env
+
 # solidity-coverage files
 /coverage
 /coverage.json
