@@ -13,6 +13,4 @@ describe('Hello world contract tester', async () => {
     
     // console.log(Contract.interface);
     // console.log(Contract.runner);
-    
-    
  })
