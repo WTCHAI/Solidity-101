@@ -37,7 +37,11 @@ async function Deployer(contractName:string){
         // Getting list of accounts avaliable from hardhat 
         const deployers = await hre.ethers.getSigners() ; 
         console.log("Deploying contract with the account : ",deployers)
-
+        
+        // Deploying the contract using the deployer's signer [0] related on hardhat config
+        // Which contract is require owner so we have to connect owner = msg.sender  
+        const contract = await ContractFactory.connect(deployers[0]).deploy();
+        console.log("Contract deployed to : ",contract);
     }catch(err){
         console.error("Error during deployment:", err);
         process.exit(1);
