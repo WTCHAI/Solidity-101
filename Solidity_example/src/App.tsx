@@ -1,27 +1,33 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import './App.css'
-
-
 import {
   Home,
   EtherWallet,
+  ConnectWallet
 } from './pages/index'
 
+
+import './App.css'
 
 
 function App() {
   return (
     <>
-      <div className='p-5 bg-gray-50'>
-        Main pages 
-      </div>
-      <Router>
-        <Routes>
-          <Route path="/EtherWallet" element={<EtherWallet />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router>
+      <nav>
+        Navigation        
+      </nav>
+      <main>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/ether-wallet" element={<EtherWallet />} />
+              <Route path="/connect-wallet" element={<ConnectWallet />} />
+            </Routes>
+          </Router>   
+      </main>
+      <footer>
+        footer layout
+      </footer>
     </>
   )
 }
