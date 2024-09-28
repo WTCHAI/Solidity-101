@@ -13,21 +13,15 @@ import './App.css'
 function App() {
   return (
     <>
-      <nav>
-        Navigation        
-      </nav>
       <main>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/ether-wallet" element={<EtherWallet />} />
-              <Route path="/connect-wallet" element={<ConnectWallet />} />
-            </Routes>
-          </Router>   
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/ether-wallet" element={<EtherWallet />} />
+            <Route path="/connect-wallet" element={<ConnectWallet />} />
+          </Routes>
+        </Router>           
       </main>
-      <footer>
-        footer layout
-      </footer>
     </>
   )
 }

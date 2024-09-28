@@ -11,11 +11,13 @@ export default function Home() {
         {
             path : '/connect-wallet'
         }
-
     ]
 
     return (
         <main className="container">
+            <nav>
+                navigation bar
+            </nav>
             <div className="flex flex-col">
                 <ul>
                     {routes.map((e) => {
@@ -52,6 +54,9 @@ export default function Home() {
                     }
                 </ul>
             </div>
+            <footer>
+                    footer
+            </footer>        
         </main>
     )
 }
