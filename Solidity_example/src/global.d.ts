@@ -1,4 +1,9 @@
 // global.d.ts
-interface Window {
-    ethereum?: any;
+import { Eip1193Provider } from "ethers"
+import { MetaMaskInpageProvider } from "@metamask/providers"
+
+declare global {
+    interface Window {
+        ethereum : Eip1193Provider & MetaMaskInpageProvider ;
+    }
 }
