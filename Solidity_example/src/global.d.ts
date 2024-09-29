@@ -4,7 +4,7 @@ import { MetaMaskInpageProvider } from "@metamask/providers"
 
 declare global {
     interface Window {
-        ethereum : Eip1193Provider ;
-        // ethereum : Eip1193Provider & MetaMaskInpageProvider ;
+        // ethereum : Eip1193Provider ;
+        ethereum : Eip1193Provider & MetaMaskInpageProvider ;
     }
 }
