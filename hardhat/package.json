@@ -1,15 +1,17 @@
 {
   "dependencies": {
-      "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@openzeppelin/contracts": "^5.0.2",
+    "dotenv": "^16.4.5"
   },
   "devDepe\ndencies": {
-      "@matterlabs/hardhat-zksync-deploy": "^1.5.0",
-      "@nomicfoundation/hardhat-chai-matchers": "^2.0.7",
-      "@nomicfoundation/hardhat-ignition-ethers": "^0.15.5",
-      "@nomiclabs/hardhat-etherscan": "^3.1.8",
-      "chai": "^4.5.0",
-      "dotenv": "^16.4.5",
-      "ethers": "^6.13.2",
-      "fix": "^0.0.6"
+    "@matterlabs/hardhat-zksync-deploy": "^1.5.0",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.7",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.5",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "chai": "^4.5.0",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.2",
+    "fix": "^0.0.6"
   }
 }

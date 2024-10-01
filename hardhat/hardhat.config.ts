@@ -12,16 +12,24 @@ const config: HardhatUserConfig = {
       url: `https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
       accounts: [`0x${process.env.PRIVATE_KEY_MY_WALLET_SEPOLIA}`],
     },
+    hoelsky:{
+      url: `${process.env.HOELSKY_RPC_URL}`,
+      accounts: [process.env.PRIVATE_KEY_HOLESKY!]
+    }
   },
   etherscan: { 
     apiKey : process.env.ETHERSCAN_API_KEY
   },
   sourcify: {
-    // Disabled by default
-    // Doesn't need an API key
+
+    enabled: true
+  },
+  gasReporter:{
     enabled: true
   }
 };
 
 export default config;
+
+
 
