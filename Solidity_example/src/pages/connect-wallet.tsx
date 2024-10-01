@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useConnectWallet } from "../custom-hooks/useConnectWallet"
 
 export default function ConnectWallet() {
-    const { userInfo , OnConnectToWallet ,OnDisconnectWallet } = useConnectWallet()    
+    const { userInfo , OnConnectToWallet ,OnDisconnectWallet , OnGetProviderProperties } = useConnectWallet()    
 
     useEffect(()=>{
       // OnConnectToWallet()
@@ -25,13 +25,28 @@ export default function ConnectWallet() {
           Disconnect wallet 
         </button>
         <div>
-              <h3>Connected Wallet Info</h3>
-              <p>Address: {userInfo.walletAddress}</p>
-              <p>
-                Chain Id : {userInfo.provider?._network.chainId.toLocaleString()}
-              </p>
-              <p>Provider: {userInfo.provider ? "Connected" : "Not Connected"}</p>
+          <h3>Connected Wallet Info</h3>
+          <p>Address: {userInfo.walletAddress}</p>
+          <p>
+            Chain Id : {userInfo.provider?._network.chainId.toLocaleString()}
+            Chain name : {userInfo.provider?._network.name}
+          </p>
+          <p>Provider: {userInfo.provider ? "Connected" : "Not Connected"}</p>
+        </div> 
+        <section>
+          <div>
+            All properties in provider
+            <button 
+              onClick={OnGetProviderProperties}
+            >
+              Log All provider properties 
+
+            </button>
           </div>
+          <div>
+            All properties in signers 
+          </div>
+        </section>
       </div>
     )
   }
