@@ -25,34 +25,59 @@
 
 // main();
 
-
 import hre from "hardhat";
 
 async function Deployer(contractName:string){
     try{
-
         //Getting contract object wth specified contract 
         const ContractFactory = await hre.ethers.getContractFactory(contractName);
         
         // Getting list of accounts avaliable from hardhat 
-        const deployers = await hre.ethers.getSigners() ; 
-        console.log("Deploying contract with the account : ",deployers)
-        
+        // Deployer in case didn't set the account private key in hardhat config & env
+        // const deployers = await hre.ethers.getSigners() ; 
+        // console.log("Deploying contract with the account : ",deployers)
+
         // Deploying the contract using the deployer's signer [0] related on hardhat config
         // Which contract is require owner so we have to connect owner = msg.sender  
-        const contract = await ContractFactory.connect(deployers[0]).deploy();
-        console.log("Contract deployed to : ",contract);
+        // Refactor deploying without telling who is signers cause already declare in env & hardhat config
+        const etherWalletContract = await ContractFactory.deploy()
+        await etherWalletContract.deploymentTransaction()?.wait(3)
+
+        // Verifing contract 
+        const etherWalletContractAddress = await etherWalletContract.getAddress();
+        console.log("Contract deployed to : ",await etherWalletContract.getAddress());
+        try {
+            await hre.run("verify:verify", {
+                address : etherWalletContractAddress,
+                // contract optinal for organization teelign where contract is 
+                // contract: 'contracts/Calendar.sol:Calendar'
+
+            })
+
+        }catch(err){
+            console.error("Error during verification:",err);
+            process.exit(1);
+        }        
+        // Schema from documents
+        // await hre.run("verify:verify", {
+        //     address: contractAddress,
+        //     constructorArguments: [
+        //       50,
+        //       "a string argument",
+        //       {
+        //         x: 10,
+        //         y: 5,
+        //       },
+        //       "0xabcdef",
+        //     ],
+        //   });
     }catch(err){
         console.error("Error during deployment:", err);
         process.exit(1);
     }
 }
-
+// After deploy
 // running script 
-// npx hardhat run scripts/deploy.ts --network sepolia
-// contract address : 0x5d3d7bb5228F9Ef3624eB8E43BF6f0a68B5B9848
+// npx hardhat run scripts/deploy.ts --network hoelsky
+// contract address : 0x441e0bFe7Dbe3f7aA995d7d87880F4DFe4FdeD97
 Deployer("EtherWallet");
-
-// Verifying conract running script 
-// npx hardhat verify --network mainnet DEPLOYED_CONTRACT_ADDRESS "Constructor argument 1"
-// npx hardhat verify --network sepolia 0x5d3d7bb5228F9Ef3624eB8E43BF6f0a68B5B9848 
