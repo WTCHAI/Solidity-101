@@ -78,6 +78,6 @@ async function Deployer(contractName:string){
 }
 // After deploy
 // running script 
-// npx hardhat run scripts/deploy.ts --network hoelsky
+// npx hardhat run scripts/deploy.ts --network holesky
 // contract address : 0x441e0bFe7Dbe3f7aA995d7d87880F4DFe4FdeD97
 Deployer("EtherWallet");
